@@ -1,8 +1,17 @@
 import express from 'express'
+import administradorRepository from './repositories/administrador.repository'
+
+const AdministradorRepository = new administradorRepository()
 
 const server = express()
 
 server.use(express.json())
+
+server.get("/", async (_, res) => {
+
+   const r = await AdministradorRepository.get()
+   res.send(r)
+})
 
 const PORT = process.env.PORT || 3000
 
