@@ -9,7 +9,8 @@ export const createTables = async () => {
          cpf VARCHAR(12) NOT NULL,
          telefone VARCHAR(12) NOT NULL,
 
-         PRIMARY KEY (id)
+         PRIMARY KEY (id),
+         UNIQUE (cpf)
       );
       
       CREATE TABLE clientes (
@@ -19,7 +20,8 @@ export const createTables = async () => {
          cpf VARCHAR(12) NOT NULL,
          telefone VARCHAR(12) NOT NULL,
 
-         PRIMARY KEY (id)
+         PRIMARY KEY (id),
+         UNIQUE(cpf)
       );
 
       CREATE TABLE administradores (
@@ -28,7 +30,8 @@ export const createTables = async () => {
          email VARCHAR(60) NOT NULL,
          senha VARCHAR(30) NOT NULL,
 
-         PRIMARY KEY (id)
+         PRIMARY KEY (id),
+         UNIQUE (email)
       );
 
       CREATE TABLE pets (

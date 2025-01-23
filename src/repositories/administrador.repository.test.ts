@@ -9,7 +9,7 @@ describe("Testando métodos do administrador repository", () => {
 
    const administradorRepository = new AdministradorRepository()
    const db = newDb()
-   
+
    beforeAll(() => {
       
       require("../database/database").query.mockImplementation((sql:string, params:any[] = []) => {
@@ -24,7 +24,7 @@ describe("Testando métodos do administrador repository", () => {
             email VARCHAR(60) NOT NULL,
             senha VARCHAR(30) NOT NULL,
 
-            PRIMARY KEY (id)
+            PRIMARY KEY (id, email)
          );
       `)
    })
@@ -78,5 +78,9 @@ describe("Testando métodos do administrador repository", () => {
       expect(result).toBeDefined()
       expect(result.length).toBe(0)
       expect(result).toEqual([])
+   })
+
+   test("Método get() não pode criar administradores com ids duplicados", async () => {
+
    })
 })
