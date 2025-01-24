@@ -7,7 +7,7 @@ jest.mock("../../database/database", () => ({
    query: jest.fn()
 }))
 
-describe("Testando métodos do Administradores Services", () => {
+describe("Testando métodos do Administrador Services", () => {
 
    const db = newDb()
    const AdministradorRepository = new administradorRepository()
