@@ -144,4 +144,18 @@ describe("Testando métodos do Administradores Services", () => {
          expect(result[0]).toEqual({ ...alreadyExistingAdmin[0], senha: "senha atualizada" })
       })
    })
+
+   describe("Método delete()", () => {
+
+      test("Deve excluir o usuário existente e obter lista vazia", async () => {
+
+         const alreadyExistingAdmin = await AdministradorServices.getAdmins()
+
+         const response = await AdministradorServices.deleteAdmin(alreadyExistingAdmin[0].id)
+
+         expect(response).toBeDefined()
+         expect(response.length).toBe(0)
+         expect(response).toEqual([])
+      })
+   })
 })
