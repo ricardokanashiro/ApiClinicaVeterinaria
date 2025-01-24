@@ -1,7 +1,7 @@
 import { newDb, replaceQueryArgs$ } from "pg-mem"
 import AdministradorRepository from "./administrador.repository"
 
-jest.mock("../database/database", () => ({
+jest.mock("../../database/database", () => ({
    query: jest.fn()
 }))
 
@@ -12,7 +12,7 @@ describe("Testando métodos do administrador repository", () => {
 
    beforeAll(() => {
       
-      require("../database/database").query.mockImplementation((sql:string, params:any[] = []) => {
+      require("../../database/database").query.mockImplementation((sql:string, params:any[] = []) => {
          const queryWithParams = replaceQueryArgs$(sql, params)
          return db.public.query(queryWithParams)
       })
@@ -100,25 +100,6 @@ describe("Testando métodos do administrador repository", () => {
          expect(result).toBeDefined()
          expect(result.length).toBe(1)
          expect(result).toEqual([{ ...fakeData, email: "ricardo@email.com", senha: "senha123" }])
-      })
-   
-      test("Não deve atualizar caso Email esteja duplicado", async () => {
-   
-         const fakeAnotherAdm = {
-            id: "2",
-            nome: "Outro Ricardo",
-            email: "ricardooutro@email.com",
-            senha: "senha123"
-         }
-   
-         await administradorRepository.create(fakeAnotherAdm)
-   
-         const fakeData = {
-            email: "ricardo@email.com",
-            id: "2"
-         }
-   
-         await expect(administradorRepository.update(fakeData)).rejects.toThrow()
       })
    })
 

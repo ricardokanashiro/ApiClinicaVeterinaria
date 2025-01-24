@@ -1,5 +1,5 @@
 import express from 'express'
-import administradorRepository from './repositories/administrador.repository'
+import administradorRepository from './repositories/administrador/administrador.repository'
 
 const AdministradorRepository = new administradorRepository()
 

@@ -39,7 +39,7 @@ class administradorRepository {
 
    }
 
-   async update({ id, nome, email, senha }: IAdministradorData) {
+   async update({ id, nome, senha }: IAdministradorData) {
 
       try {
 
@@ -49,11 +49,6 @@ class administradorRepository {
          if (nome) {
             query += ` nome = $${params.length + 1}`
             params.push(nome)
-         }
-
-         if (email) {
-            params.length > 0 ? query += `, email = $${params.length + 1}` : query += ` email = $${params.length + 1}`
-            params.push(email)
          }
 
          if (senha) {
